@@ -9,11 +9,13 @@ import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -86,8 +88,12 @@ public class HomeController {
 	
 	
 	@RequestMapping(value="/admin/productInventory/addProduct", method=RequestMethod.POST)
-	public String addProductPost(@ModelAttribute("product") Product product, HttpServletRequest request){
+	public String addProductPost(@Valid @ModelAttribute("product") Product product, BindingResult result, HttpServletRequest request){
 		System.out.println("the product received by the homecontroller is \n" + product);
+		if(result.hasErrors()){
+			return "addProduct";
+		}
+		
 		System.out.println("going to add the product");
 		productDao.addProduct(product);
 		
@@ -144,7 +150,10 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value="/admin/productInventory/editProduct", method=RequestMethod.POST)
-	public String editProduct(@ModelAttribute("product") Product product, Model model, HttpServletRequest request){
+	public String editProduct(@Valid @ModelAttribute("product") Product product, BindingResult result, Model model, HttpServletRequest request){
+		if(result.hasErrors()){
+			return "editProduct";
+		}
 		MultipartFile productImage = product.getProductImage();
 		path = Paths.get("C:\\Users\\sandeep.chauhan\\workspace3\\eCommerce\\src\\main\\webapp\\resources\\images\\"+product.getProductId()+".png");
 		if(productImage != null & !productImage.isEmpty()){

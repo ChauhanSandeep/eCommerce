@@ -5,7 +5,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Transient;
+import javax.validation.constraints.Min;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -18,13 +20,17 @@ public class Product {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int productId;
+	
+	@NotEmpty(message="the product name cannot be null")
 	private String productName;
 	private String productCategory;
 	private String productDescription;
 	private String productCondition;
 	private String productStatus;
 	private String productManufacturer;
+	@Min(value=0, message="the product price must not be less than 0")
 	private double productPrice;
+	@Min(value=0, message="the units cannot be less than 0")
 	private int unitInStock;
 	
 	@Transient
