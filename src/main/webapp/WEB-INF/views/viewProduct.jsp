@@ -13,7 +13,8 @@
   	<div class="container">
   		<div class="row">
   			<div class="col-md-5">
-  				<img alt="image" src="#" style="width:100% height:300px">
+  				<!-- <img alt="image" src="#" style="width:100% height:300px"> -->
+  				<img src="<c:url value="/resources/images/${product.productId}.png" /> " alt="image" style="width:100% height:300px"/>
   			</div>
   			
   			<div class="col-md-5">

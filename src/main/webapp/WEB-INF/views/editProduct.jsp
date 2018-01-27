@@ -5,16 +5,18 @@
 	<div class="container">
 		<br /> <br /> <br />
 		<div class="page-header">
-			<h1>Add Product</h1>
-			<p class="lead">Fill the below information to add the product</p>
+			<h1>Edit Product</h1>
+			<p class="lead">Please udpate the product information</p>
 		</div>
 
 		<form:form
-			action="${pageContext.request.contextPath }/admin/productInventory/addProduct"
+			action="${pageContext.request.contextPath }/admin/productInventory/editProduct"
 			method="post" commandName="product" enctype="multipart/form-data">
+			
+			<form:hidden path="productId" value="${product.productId }"/>
 			<div class="form-group">
 				<label for="name">Name:</label>
-				<form:input path="productName" id="name" class="form-control" />
+				<form:input path="productName" id="name" class="form-control" value="${product.productName }"/>
 			</div>
 
 			<%-- <div class="form-group">
@@ -37,12 +39,12 @@
 			<div class="form-group">
 				<label for="description">Description</label>
 				<form:textarea path="productDescription" id="description"
-					class="form-control" />
+					class="form-control" value="${product.productDescription }"/>
 			</div>
 
 			<div class="form-group">
 				<label for="price">Price</label>
-				<form:input path="productPrice" id="price" class="form-control" />
+				<form:input path="productPrice" id="price" class="form-control" value="${product.productPrice }"/>
 			</div>
 
 			<%-- <div class="form-group">
@@ -76,13 +78,13 @@
 
 			<div class="form-group">
 				<label for="unitInStock">Unit In Stock</label>
-				<form:input path="unitInStock" id="unitInStock" class="form-control" />
+				<form:input path="unitInStock" id="unitInStock" class="form-control" value="${product.unitInStock }"/>
 			</div>
 
 			<div class="form-group">
 				<label for="Manufacturer">Manufacturer</label>
 				<form:input path="productManufacturer" id="manufacturer"
-					class="form-control" />
+					class="form-control" value="${product.productManufacturer }"/>
 			</div>
 			
 			<div class="form-group">

@@ -4,6 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
+
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * @author sandeep.chauhan
@@ -23,6 +26,9 @@ public class Product {
 	private String productManufacturer;
 	private double productPrice;
 	private int unitInStock;
+	
+	@Transient
+	private MultipartFile productImage;
 	
 	
 	public int getProductId() {
@@ -95,6 +101,14 @@ public class Product {
 
 	public void setUnitInStock(int unitInStock) {
 		this.unitInStock = unitInStock;
+	}
+
+	public MultipartFile getProductImage() {
+		return productImage;
+	}
+
+	public void setProductImage(MultipartFile productImage) {
+		this.productImage = productImage;
 	}
 
 	@Override
