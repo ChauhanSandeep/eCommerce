@@ -20,6 +20,9 @@
  
     <!-- Custom styles for this template -->
      <link href="<c:url value="/resources/css/carousel.css" />" rel = "stylesheet">
+     
+     <!-- Angular JS -->
+     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js"></script>
    
   </head>
 <!-- NAVBAR

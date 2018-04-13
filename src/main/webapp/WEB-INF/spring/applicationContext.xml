@@ -7,12 +7,22 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	
-	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+<!-- This configuration is used for localhost application testing.-->
+ 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 	<property name="url" value="jdbc:mysql://localhost:3306/newdatabase" />
 	<property name="username" value="root" />
 	<property name="password" value="mysql" />
 	</bean>
+	
+	<!-- This configuration is used for amazon web services -->
+<!-- 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+	<property name="url" value="jdbc:mysql://aa16siqc8gjagck.c2kpovrfqjhr.us-east-2.rds.amazonaws.com:3306/ebdb" />
+	<property name="username" value="root" />
+	<property name="password" value="Winter2018" />
+	</bean> -->
+	
 	
 	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
