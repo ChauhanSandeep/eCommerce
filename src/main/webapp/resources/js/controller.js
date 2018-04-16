@@ -1,6 +1,3 @@
-/**
- * Created by Le on 10/21/2015.
- */
 var cartApp = angular.module("cartApp", []);
 
 cartApp.controller('cartCtrl', function ($scope, $http) {

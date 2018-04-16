@@ -7,9 +7,13 @@ import com.udemy.eMusicStore.model.Cart;
  *
  */
 public interface CartDao {
-	
-	Cart create(Cart cart);
-	Cart read(String cartId);
-	void updateCart(String cartId, Cart cart);
-	void delete(String cartId);
+
+    Cart create(Cart cart);
+
+    Cart read(String cartId);
+
+    void update ( String cartId, Cart cart);
+
+    void delete (String cartId);
 }
+

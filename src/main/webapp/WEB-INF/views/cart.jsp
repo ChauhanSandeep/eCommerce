@@ -1,21 +1,20 @@
 <!--  <%@include file="/WEB-INF/views/template/header.jsp"%>
-<script type="text/javascript">
-alert("test");
-</script>
+
 <div class="container-wrapper">
 	<div class="container">
 		<section>
 			<div class="jumbotron">
-				<div class="container">
+				<div class="container" >
 					<h1>Cart</h1>
 					<p>All the products selected in your Shopping Cart.</p>
 				</div>
 			</div>
 		</section>
 
-		<section class="container">
+		<section class="container" ng-app="cartApp">
+		<div ng-controller="cartCtrl" ng-init="initCartId('${cartId}')"></div>
 			<div>
-				<a class="btn btn-danger pull-left"><span class="glyphicon glyphicon-remove-sign">Clear Cart</span></a>
+				<a class="btn btn-danger pull-left" ng-click="clearCart()"><span class="glyphicon glyphicon-remove-sign">Clear Cart</span></a>
 			</div>
 			
 			<table class="table table-hover">
@@ -26,11 +25,15 @@ alert("test");
 					<th>Price</th>
 					<th>Action</th>
 				</tr>
-				<tr>
-					<td>productName</td>
-					<td>productPrice</td>
-					<td>quantity</td>
-					<td>totalPrice</td>
+				<tr ng-repeat = "item in cart.cartItems">
+					<td>{{item.product.productName}}</td>
+					<td>{{item.product.productPrice}}</td>
+					<td>{{item.quantity}}</td>
+					<td>{{item.totalPrice}}</td>
+					
+					<td><a href="#" class="label label-danger" ng-click="removeFromCart(item.product.productId)">
+					<span class="glyphicon glyphicon-remove">remove</a></td>
+					
 					<td>action</td>
 					<td>remove button</td>
 				</tr>
@@ -48,5 +51,5 @@ alert("test");
 	</div>
 
 </div>
-
+<script src="<c:url value="/resources/js/controller.js" /> "></script>
 <%@include file="/WEB-INF/views/template/footer.jsp"%>-->

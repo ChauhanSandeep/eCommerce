@@ -10,7 +10,7 @@
   	</div>
   	
   	
-  	<div class="container">
+  	<div class="container" ng-app="cartApp">
   		<div class="row">
   			<div class="col-md-5">
   				<!-- <img alt="image" src="#" style="width:100% height:300px"> -->
@@ -24,10 +24,26 @@
   				<p><strong>Category : </strong>${product.productCategory}</p>
   				<p><strong>Condition : </strong>${product.productCondition}</p>
   				<p><strong>Price : </strong>${product.productPrice}</p>
+  				<br/>
+  				
+  				<c:set var="role" scope="page" value="${param.role}" />
+  				<c:set var="url" scope="page" value="/productList" />
+  				
+  				<c:if test="${role=='admin'}">
+  					<c:set var="url" scope="page" value="/admin/productInventory" />
+  				</c:if> 
+  				
+  				<p ng-controller="cartCtrl">
+  					<a href='<c:url value="${url}" />' class="btn btn-default">Back</a>
+  					<a href="#" class="btn btn-warning btn-large"
+                           ng-click="addToCart('${product.productId}')"><span
+                                class="glyphicon glyphicon-shopping-cart"></span>Order
+                            Now</a>
+  				</p>
   			</div>
   		</div>
   	
   	</div>
   	
-
+<script src="<c:url value="/resources/js/controller.js" /> "></script>
 <%@include file="/WEB-INF/views/template/footer.jsp" %>

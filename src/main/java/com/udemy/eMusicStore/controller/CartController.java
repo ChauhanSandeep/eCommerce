@@ -40,7 +40,7 @@ public class CartController {
 	@RequestMapping(value="/{cartId}", method = RequestMethod.PUT)
 	@ResponseStatus(value=HttpStatus.NO_CONTENT)
 	public void update(@PathVariable(value="cartId") String cartId, @RequestBody Cart cart){
-		cartDao.updateCart(cartId, cart);
+		cartDao.update(cartId, cart);
 	}
 	
 	@RequestMapping(value="/{cartId}", method = RequestMethod.DELETE)
@@ -49,27 +49,34 @@ public class CartController {
 		cartDao.delete(cartId);
 	}
 	
-	@RequestMapping(value="/add/{productId}", method=RequestMethod.PUT)
+	//need to add , method=RequestMethod.PUT
+	@RequestMapping(value="/add/{productId}")
 	@ResponseStatus(value=HttpStatus.NO_CONTENT)
-	public void addItem(@PathVariable (value="productId") Integer productId, HttpServletRequest request){
+	public void addItem(@PathVariable (value="productId") int productId, HttpServletRequest request){
 		String sessionId = request.getSession().getId();
+		System.out.println("the session id is "+ sessionId);
 		Cart cart = cartDao.read(sessionId);
 		
 		if(cart == null){
 			cart = cartDao.create(new Cart(sessionId));
+			System.out.println("new cart is created");
 		}
 		
 		Product product = productDao.getProductById(productId);
 		if(product == null){
 			throw new IllegalArgumentException(new Exception());
 		}
+		System.out.println("ready to insert into cart");
 		cart.addCartItem(new CartItem(product));
-		cartDao.updateCart(sessionId, cart);
+		System.out.println("cart insertion complete");
+		System.out.println("updating cart");
+		cartDao.update(sessionId, cart);
+		System.out.println("cart updated");
 	}
 	
 	@RequestMapping(value="/remove/{productId}", method=RequestMethod.PUT)
 	@ResponseStatus(value=HttpStatus.NO_CONTENT)
-	public void removeItem(@PathVariable (value="productId") Integer productId, HttpServletRequest request){
+	public void removeItem(@PathVariable (value="productId") int productId, HttpServletRequest request){
 		String sessionId = request.getSession().getId();
 		Cart cart = cartDao.read(sessionId);
 		
@@ -82,7 +89,7 @@ public class CartController {
 			throw new IllegalArgumentException(new Exception());
 		}
 		cart.removeCartItem(new CartItem(product));
-		cartDao.updateCart(sessionId, cart);
+		cartDao.update(sessionId, cart);
 	}
 	
 	@ExceptionHandler(IllegalArgumentException.class)
