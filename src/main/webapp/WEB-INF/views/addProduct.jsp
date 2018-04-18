@@ -10,7 +10,7 @@
 		</div>
 
 		<form:form
-			action="${pageContext.request.contextPath }/admin/productInventory/addProduct"
+			action="${pageContext.request.contextPath }/admin/product/addProduct"
 			method="post" commandName="product" enctype="multipart/form-data">
 			<div class="form-group">
 				<label for="name">Name:</label><form:errors path="productName" cssStyle="color:#ff0000;"></form:errors>
@@ -93,7 +93,7 @@
 			<br />
 			<br />
 			<input type="submit" class="btn btn-default">
-			<a href="<c:url value="/admin/productInventory" />"
+			<a href="<c:url value="/admin/product" />"
 				class="btn btn-default">Cancel</a>
 
 		</form:form>
