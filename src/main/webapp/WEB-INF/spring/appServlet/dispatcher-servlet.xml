@@ -12,8 +12,12 @@
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
-	<mvc:annotation-driven />
-	
+	<mvc:annotation-driven>
+		<mvc:argument-resolvers>
+			<beans:bean class="org.springframework.security.web.bind.support.AuthenticationPrincipalArgumentResolver">
+			</beans:bean>		
+		</mvc:argument-resolvers>
+	</mvc:annotation-driven>
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
 
