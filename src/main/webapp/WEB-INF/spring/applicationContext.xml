@@ -59,7 +59,7 @@
 			authentication-failure-url="/login?error" 
 			username-parameter="username" 
 			password-parameter="password" />
-		<security:logout logout-success-url="/login?logout" />	
+		<security:logout logout-success-url="/" />	
 	</security:http>
 	
 	<security:authentication-manager>
