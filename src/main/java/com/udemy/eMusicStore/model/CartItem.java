@@ -34,6 +34,10 @@ public class CartItem implements Serializable{
 
     private int quantity;
     private double totalPrice;
+    
+    public CartItem(){
+    	
+    }
 
     /**
 	 * @param product2

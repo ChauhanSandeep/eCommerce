@@ -30,16 +30,18 @@ public class CartController {
 	 */
 	@RequestMapping
 	public String getCart(@AuthenticationPrincipal User activeUser){
+		System.out.println("trying to get customer");
 		Customer customer = customerService.getCustomerByUsername(activeUser.getUsername());
+		System.out.println("the name of the customer is " + customer.getCustomerName());
 		int cartId = customer.getCart().getCartId();
+		System.out.println("the cart id is "+ cartId);
 		return "redirect:/customer/cart/"+cartId;
 		
 	}
 	
 	@RequestMapping("/{cartId}")
-	public String getCartRedirect(@PathVariable("cartid") int cartId, Model model){
+	public String getCartRedirect(@PathVariable("cartId") int cartId, Model model){
 		model.addAttribute("cartId", cartId);
-		
 		return "cart";
 	}
 

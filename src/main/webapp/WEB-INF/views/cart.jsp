@@ -41,7 +41,7 @@
 					<th></th>
 					<th></th>
 					<th>Grand Total</th>
-					<th>grandTotal</th>
+					<th>{{calGrandTotal()}}</th>
 					<th></th>
 				</tr>
 			</table>

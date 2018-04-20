@@ -1,4 +1,4 @@
-package com.udemy.eMusicStore.dao;
+package com.udemy.eMusicStore.service;
 
 import com.udemy.eMusicStore.model.Cart;
 
@@ -6,9 +6,9 @@ import com.udemy.eMusicStore.model.Cart;
  * @author sandeep.chauhan
  *
  */
-public interface CartDao {
-
+public interface CartService {
+	
 	Cart getCartById(int id);
 	void updateCart(Cart cart);
-}
 
+}
