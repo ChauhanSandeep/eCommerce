@@ -53,6 +53,7 @@ public class CartResources {
 	@RequestMapping(value="/add/{productId}", method=RequestMethod.PUT)
 	@ResponseStatus(value=HttpStatus.NO_CONTENT) 
 	public void addItem(@PathVariable("productId") int productId, @AuthenticationPrincipal User activeUser){
+		System.out.println("call reached to cart");
 		String customerName = activeUser.getUsername();
 		Customer customer = customerService.getCustomerByUsername(customerName);
 		Cart cart = customer.getCart();

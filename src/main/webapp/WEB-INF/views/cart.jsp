@@ -1,4 +1,4 @@
-<!--  <%@include file="/WEB-INF/views/template/header.jsp"%>
+ <%@include file="/WEB-INF/views/template/header.jsp"%>
 
 <div class="container-wrapper">
 	<div class="container">
@@ -11,12 +11,13 @@
 			</div>
 		</section>
 
-		<section class="container" ng-app="cartApp">
-		<div ng-controller="cartCtrl" ng-init="initCartId('${cartId}')"></div>
+		<section class="container" ng-app="cartApp" ng-controller="cartCtrl">
+		
+		<div  ng-init="initCartId('${cartId}')"></div>
 			<div>
-				<a class="btn btn-danger pull-left" ng-click="clearCart()"><span class="glyphicon glyphicon-remove-sign">Clear Cart</span></a>
+				<a class="btn btn-danger btn-lg pull-left" ng-click="clearCart()"><span class="glyphicon glyphicon-remove-sign">  Clear Cart</span></a>
 			</div>
-			
+			 <p ng-bind="name"></p>
 			<table class="table table-hover">
 				<tr>
 					<th>Product</th>
@@ -34,8 +35,8 @@
 					<td><a href="#" class="label label-danger" ng-click="removeFromCart(item.product.productId)">
 					<span class="glyphicon glyphicon-remove">remove</a></td>
 					
-					<td>action</td>
-					<td>remove button</td>
+					<!-- <td>action</td>
+					<td>remove button</td> -->
 				</tr>
 				<tr>
 					<th></th>
@@ -46,10 +47,12 @@
 				</tr>
 			</table>
 			
-			<a href='<spring:url value="/productList"></spring:url>'>Continue Shopping</a>
+			<a type="button" class="btn btn-primary" href='<spring:url value="/product/productList"></spring:url>'>Continue Shopping</a>
+			<br/><br/>
+			
 		</section>
 	</div>
 
 </div>
 <script src="<c:url value="/resources/js/controller.js" /> "></script>
-<%@include file="/WEB-INF/views/template/footer.jsp"%>-->
+<%@include file="/WEB-INF/views/template/footer.jsp"%>
